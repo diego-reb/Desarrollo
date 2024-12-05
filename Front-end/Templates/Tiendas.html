@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isoport</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="">
+            <span>ISOPORT</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="/Templates/home.html">Home</a></li>
+                <li><a href="/Templates/Tiendas.html">Tiendas</a></li>
+                <li><a href="/Templates/Utileria.html">Utilería</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <button id="userButton">
+                <i class="fa-solid fa-user"></i>
+                <span>USUARIO</span>
+            </button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <a href="#editar">Editar</a>
+                <a href="#cerrar-sesion">Cerrar sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <div class="search-box">
+                <input type="text" placeholder="Buscar tienda">
+                <button>
+                    <svg xmlns="" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.292-7.81a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="store-list">
+            <div class="store">
+                <i class="fa-solid fa-shop"></i>
+                <div class="store-details">
+                    <h3>Lazaro cardenas</h3>
+                    <p>Lazaro</p>
+                </div>
+            </div>
+            <div class="store">
+                <i class="fa-solid fa-shop"></i>
+                <div class="store-details">
+                    <h3>Miguel Higalgo</h3>
+                    <p>Miguel</p>
+                </div>
+            </div>
+            <div class="store">
+                <i class="fa-solid fa-shop"></i>
+                <div class="store-details">
+                    <h3>Zacatecas</h3>
+                    <p>Zacatecas</p>
+                </div>
+            </div>
+            <div class="store">
+                <i class="fa-solid fa-shop"></i>
+                <div class="store-details">
+                    <h3>Cholula</h3>
+                    <p>Cholula</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const userButton = document.getElementById('userButton');
+        const menuDropdown = document.getElementById('menuDropdown');
+
+        userButton.addEventListener('click', () => {
+            menuDropdown.classList.toggle('active');
+        });
+
+        // Ocultar el menú si se hace clic fuera de él
+        document.addEventListener('click', (event) => {
+            if (!userButton.contains(event.target) && !menuDropdown.contains(event.target)) {
+                menuDropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isoport</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="">
+            <span>ISOPORT</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="/Templates/home.html">Home</a></li>
+                <li><a href="/Templates/Tiendas.html">Tiendas</a></li>
+                <li><a href="/Templates/Utileria.html">Utilería</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <button id="userButton">
+                <i class="fa-solid fa-user"></i>
+                <span>USUARIO</span>
+            </button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <a href="#editar">Editar</a>
+                <a href="#cerrar-sesion">Cerrar sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="tasks">
+            <h2>Tareas de Hoy</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="task-stats">
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Abiertas</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Completas</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>Abandonadas</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calendar">
+            <h2>Calendario de hoy</h2>
+            <div class="event">
+                <div class="status"></div>
+                <div class="event-details">
+                    <h3>Super AKI PTO AVENTURAS</h3>
+                    <p>via AV.CALZADO.PTO.MAYA S/N LOTE 2,4 Y 5 ENTRE CARR. FE</p>
+                </div>
+                <div class="event-time">
+                    <p>8:34 - 9:13</p>
+                </div>
+            </div>
+            <div class="event">
+                <div class="status"></div>
+                <div class="event-details">
+                    <h3>YZA PUERTO MAYA 2</h3>
+                    <p>via AV.CALZADO.PTO.MAYA Mz 8 LOTE 17 Playa del Carmen, Quintana...</p>
+                </div>
+                <div class="event-time">
+                    <p>9:14 - 9:21</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const userButton = document.getElementById('userButton');
+        const menuDropdown = document.getElementById('menuDropdown');
+
+        userButton.addEventListener('click', () => {
+            menuDropdown.classList.toggle('active');
+        });
+
+        // Ocultar el menú si se hace clic fuera de él
+        document.addEventListener('click', (event) => {
+            if (!userButton.contains(event.target) && !menuDropdown.contains(event.target)) {
+                menuDropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

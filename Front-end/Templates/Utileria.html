@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isoport</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="" width="30">
+            <span>ISOPORT</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="/Templates/home.html">Home</a></li>
+                <li><a href="/Templates/Tiendas.html">Tiendas</a></li>
+                <li><a href="/Templates/Utileria.html">Utilería</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <button id="userButton">
+                <i class="fa-solid fa-user"></i>
+                <span>USUARIO</span>
+            </button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <a href="#editar">Editar</a>
+                <a href="#cerrar-sesion">Cerrar sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Detalles</h2>
+            <div class="section-content">
+                CABECERAS HAIR CARE - 10 NOVIEMBRE - 120<br>
+                Chedraui Veracruz Ponti<br>
+                Materiales Knorr
+            </div>
+        </section>
+
+        <section>
+            <h2>Medios a instalar por tienda</h2>
+            <div class="section-content">
+                <input type="text" value="1" readonly>
+            </div>
+        </section>
+
+        <section>
+            <h2>Comentarios</h2>
+            <div class="section-content">
+                <label for="clave">Clave:</label>
+                <select id="clave">
+                    <option>SELECCIONA UNA CLAVE</option>
+                    <option>Clave 1</option>
+                    <option>Clave 2</option>
+                </select>
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" placeholder="Escribe un comentario..."></textarea>
+            </div>
+            <button class="green-button" id="activate-camera">
+                Seleccionar imágenes
+                <i class="fa-solid fa-camera"></i>
+            </button>
+            <input type="file" id="file-input" accept="image/*" style="display: none;" />
+        </section>
+    </main>
+<script>
+    //Usuario boton
+    const userButton = document.getElementById('userButton');
+        const menuDropdown = document.getElementById('menuDropdown');
+
+        userButton.addEventListener('click', () => {
+            menuDropdown.classList.toggle('active');
+        });
+
+       
+        document.addEventListener('click', (event) => {
+            if (!userButton.contains(event.target) && !menuDropdown.contains(event.target)) {
+                menuDropdown.classList.remove('active');
+            }
+        });
+        //Camara
+    document.getElementById("activate-camera").addEventListener("click", function() {
+        // Acceder a la cámara
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                // Enlazar el flujo de la cámara al elemento de video
+                const videoElement = document.createElement("video");
+                videoElement.setAttribute("id", "camera");
+                videoElement.setAttribute("width", "640");
+                videoElement.setAttribute("height", "480");
+                videoElement.setAttribute("autoplay", true);
+                document.body.appendChild(videoElement);
+
+                videoElement.srcObject = stream;
+            })
+            .catch(function(error) {
+                console.error("Error al acceder a la cámara: ", error);
+                alert("No se pudo acceder a la cámara. Intentarlo nuevamente.");
+            });
+
+        // Acceder a la galería de fotos
+        document.getElementById("file-input").click(); 
+    });
+
+    document.getElementById("file-input").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "200px"; 
+                document.body.appendChild(img); 
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+    
+</body>
+</html>
