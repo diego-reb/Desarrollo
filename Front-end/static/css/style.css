@@ -343,3 +343,27 @@ h2 {
     font-size: 18px;
     margin-bottom: 10px;
 }
+
+table {
+    display: flex;
+    border-color: #002b80 50px;
+    border-collapse: collapse; /* Para que los bordes no se dupliquen */
+    width: 96%; /* O el tamaño que desees */
+    margin: 50px auto; /*Esto centra la tabla horizontalmente */
+    justify-content: center; /* Centra la tabla horizontalmente */
+    align-items: center;     /* Centra la tabla verticalmente */
+    height: 100%;           /* Hace que el body ocupe toda la altura de la ventana */
+    margin: 50px;               /* Elimina márgenes del body */
+    background-color: white; /* Fondo opcional para visibilidad */
+    padding: 50px;
+}
+
+input {
+
+    border-top: 1px solid #002b80;     /*Borde superior de 2px de grosor y rojo*/
+    border-right: 1px solid #002b80;  /*Borde derecho de 4px de grosor y azul*/
+    border-bottom: 1px solid #002b80; /*Borde inferior de 6px de grosor y verde*/
+    border-left: 1px solid #002b80; /*Borde izquierdo de 8px de grosor y naranja*/
+    padding: 10px;
+    font-size: 16px;
+}
